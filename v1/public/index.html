@@ -159,12 +159,14 @@
             color: white;
             text-align: center;
             font-size: 300%;
+            font-family:sans-serif;
         }
 
         .hearth {
         }
 
         .webgl {
+            opacity:0.97;
             visibility: visible;
             resize: block;
             max-height: 595px;
@@ -223,6 +225,8 @@
             }
 
         .box div {
+            background-image: url(./Specialite/Ramen/Ramen.jpg);
+            font-family: sans-serif;
             width: 200px;
             display: inline-block;
             padding: 15px;
@@ -257,6 +261,7 @@
         }
 
         .sidebar-navigation {
+            opacity: 0.8;
             display: inline-block;
             max-height: 1248px;
             width: 200px;
@@ -270,9 +275,11 @@
         ul {
             text-align: center;
             color: white;
+            opacity: 0.3;
         }
 
         li {
+            opacity: 0.3;
             padding: 28px 0;
             cursor: pointer;
             transition: all ease-out 120ms;
@@ -287,7 +294,7 @@
         .tooltip {
             display: inline-block;
             position: absolute;
-            background-color: slategrey;
+            opacity:0.3;
             padding: 8px 15px;
             border-radius: 3px;
             margin-top: -26px;
@@ -307,12 +314,23 @@
            opacity:0.8;
            z-index:-5;
         }
+        text{
+            font: sans-serif;
+        
+        }
+
+
+        
+
+      
+
+        
     </style>
 </head>
 
 <body>
     <div class="banner">
-       <video src="video.mp4" autoplay loop></video>
+       <video  src="video4.mp4"  autoplay muted  loop></video>
     </div>
     <div>
         <h1 class="title">
@@ -328,18 +346,22 @@
             <div class="center">
                 <div class="git">
                     <a href="https://github.com/AzerX2/Hackaton" title="liengit">
-                        <img alt="exemple de texte alternatif" src="texture/gitlogo.png" width="100" height="100" /><br>
+                        <img alt="liengit" src="texture/gitlogo.png" width="100" height="100" /><br>
                     </a>
                 </div>
             </div>
             <div class="center">
 
                 <a href="https://www.cihnef.org/" title="lien aso">
-                    <img alt="exemple de texte alternatif" src="texture/chinef.png" width="100" height="100" />
+                    <img alt="lienaso" src="texture/chinef.png" width="100" height="100" />
                 </a>
-               
+
             </div>
-            
+            <div class="center">
+                <a href=texture/soutien.png title="ramen">
+                    <img alt="exemple de texte alternatif" src=texture/soutien.png width="130" height="100" />
+                </a>
+            </div>
         </nav>
         <div class="dropdown">
 
@@ -379,11 +401,18 @@
                 
                 <div class="green" id="myData">
                 <a href=./Specialite/Ramen/Ramen.html title="ramen">
-                    <img alt="exemple de texte alternatif" src=https://www.thuisbezorgd.nl/foodwiki/uploads/2017/05/ramen-3-e1511359817885-1080x1080.jpg width="100" height="100" />
+                    <img alt="exemple de texte alternatif" src=https://www.thuisbezorgd.nl/foodwiki/uploads/2017/05/ramen-3-e1511359817885-1080x1080.jpg width="130" height="100" />
                       </a>
                 <div class="center">Ramen : </div><input type="text" id="textbox" name="plat1" /></div>
 
-                <input id="button" type="button" value="terminé !" onclick="resp()" />
+                <div id="container">
+                    <button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text">Learn More</span>
+                    </button>
+                </div>
             </form>
         </div>
         
@@ -397,7 +426,7 @@
 
     
     <div id=fin class="fond">
-        presentation/fin
+       ba_ro² hackaton 2021
     </div>
     
 
