@@ -19,10 +19,7 @@
             })
             .then(function (data) {
                 appendData(data);
-                appendData2(data);
-                appendData3(data);
-                appendData4(data);
-                appendData5(data);
+                
             })
             .catch(function (err) {
                 console.log('error: ' + err);
@@ -33,45 +30,14 @@
         }
 
         function appendData(data) {
-            var mainContainer = document.getElementById("myData1");
+            var mainContainer = document.getElementById("myData");
             var i = getRandomInt(5)
             var div = document.createElement("div");
             div.innerHTML = 'Name: ' + data[i].name;
             mainContainer.appendChild(div);
 
         }
-        function appendData2(data) {
-            var mainContainer = document.getElementById("myData2");
-            var i = getRandomInt(5)
-            var div = document.createElement("div");
-            div.innerHTML = 'Name: ' + data[i].name;
-            mainContainer.appendChild(div);
-
-        }
-        function appendData3(data) {
-            var mainContainer = document.getElementById("myData3");
-            var i = getRandomInt(5)
-            var div = document.createElement("div");
-            div.innerHTML = 'Name: ' + data[i].name;
-            mainContainer.appendChild(div);
-
-        }
-        function appendData4(data) {
-            var mainContainer = document.getElementById("myData4");
-            var i = getRandomInt(5)
-            var div = document.createElement("div");
-            div.innerHTML = 'Name: ' + data[i].name;
-            mainContainer.appendChild(div);
-
-        }
-        function appendData5(data) {
-            var mainContainer = document.getElementById("myData5");
-            var i = getRandomInt(5)
-            var div = document.createElement("div");
-            div.innerHTML = 'Name: ' + data[i].name;
-            mainContainer.appendChild(div);
-
-        }
+        
     </script>
 
     <style>
@@ -136,18 +102,28 @@
         .dropdown:hover .dropdown-child {
             display: block;
         }
+        quiz{
+            
+        }
+        .center{
+            display: flex;
+            justify-content: center;
 
+        }
         .box div {
-            width: 100px;
+
+            
+            width: 200px;
             display: inline-block;
             padding: 15px;
             text-align: center;
+            
             color: #000000;
             font-family: arial, sans-serif;
         }
 
         .green {
-            background-color: green;
+            background-color: darkgrey;
         }
 
         .blue {
@@ -291,51 +267,35 @@
     <script>
         function resp() {
             var question1 = document.quiz.plat1.value;
-            var question2 = document.quiz.plat2.value;
-            var question3 = document.quiz.plat3.value;
-            var question4 = document.quiz.plat4.value;
-            var question5 = document.quiz.plat5.value;  
-            var correct = 0;
+            
+            var correct = "neutral";
 
 
             if (question1 == "a") {
-                correct++;
+                correct="gagné"
             }
-            if (question2 == "b") {
-                correct++;
-            }
-            if (question3 == "c") {
-                correct++;
-            }
-            if (question4=="d") {
-                correct++;
-            }
-            if (question5=="e") {
-                correct++;
+            else {
+                   correct = "perdu"
             }
 
             
             document.getElementById("after_submit").style.visibility = "visible";
-            document.getElementById("number_correct").innerHTML = "Tu as " + correct + " bonne(s) réponse(s).";
+            document.getElementById("number_correct").innerHTML = "Tu as " + correct +" UwU" ;
 
         }
 
     </script>
-    <div id="liste">
+   
+        <div class="center">
+            <div class="box">
+                <form id="quiz" name="quiz">
 
-        <h2 class="fond">Liste des plats</h2>
-        <div class="box">
-            <form id="quiz" name="quiz">
 
+                    <div class="green" id="myData"> Plat 1 : <input type="text" id="textbox" name="plat1" /></div>
 
-                <div class="green" id="myData1"> Plat 1 : <input type="text" id="textbox" name="plat1" /></div>
-
-                <div class="blue" id="myData2">plat 2 : <input type="text" id="textbox" name="plat2" /></div>
-                <div class="gray" id="myData3">plat 3 : <input type="text" id="textbox" name="plat3" /></div>
-                <div class="pink" id="myData4">plat 4 : <input type="text" id="textbox" name="plat4" /></div>
-                <div class="yellow" id="myData5">plat 5 : <input type="text" id="textbox" name="plat5" /></div>
-                <input id="button" type="button" value="terminé !" onclick="resp()" />
-            </form>
+                    <input id="button" type="button" value="terminé !" onclick="resp()" />
+                </form>
+            </div>
             <div id="after_submit">
                 <p id="number_correct"></p>
             </div>
@@ -343,7 +303,7 @@
 
 
 
-    </div>
+    
 
 
     
