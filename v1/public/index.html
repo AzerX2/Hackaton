@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" type="image/png" sizes="16x16" href=texture/logo.png>
     <title> Feed the world </title>
-    <script>
+    <script type="module" language="javascript">
         fetch('plat.json', {
             method: 'post',
             headers: {
@@ -19,7 +19,7 @@
             })
             .then(function (data) {
                 appendData(data);
-                
+
             })
             .catch(function (err) {
                 console.log('error: ' + err);
@@ -37,35 +37,138 @@
             mainContainer.appendChild(div);
 
         }
+
+        import * as THREE from '/build/three.module.js';
+        import { OrbitControls } from '/jsm/controls/OrbitControls.js';
+        import Stats from '/jsm/libs/stats.module.js';
+
+
+        let scene;
+        let camera;
+        let renderer;
+        const canvas = document.querySelector('.webgl');
+
+
+        scene = new THREE.Scene();
+
+
+        const fov = 80;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 0.1;
+        const far = 100;
+
+        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.position.z = 5;
+        scene.add(camera);
+
+
+        renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+        renderer.autoClear = false;
+        renderer.setClearColor(0x000000, 0.0);
+
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableZoom = false;
+
+        var map = 'texture/map5.png';
+        const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            roughness: 1,
+            metalness: 0,
+            map: THREE.ImageUtils.loadTexture(map)
+
+        });
+        const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+        scene.add(earthMesh);
+
+
+        const starGeometry = new THREE.SphereGeometry(80, 64, 64);
+
+
+        const starMaterial = new THREE.MeshBasicMaterial({
+            map: THREE.ImageUtils.loadTexture('texture/fond.png'),
+            side: THREE.BackSide
+        });
+
+
+        const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+        scene.add(starMesh);
+
+
+        const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientlight);
+        const pointLight = new THREE.PointLight(0xffffff, 1)
+        pointLight.position.set(5, 3, 5);
+        scene.add(pointLight);
+
+
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            render();
+        }, false);
+
+
+
+        const animate = () => {
+
+            requestAnimationFrame(animate);
+
+            controls.update();
+            render();
+            stats.update();
+        };
+
+
+        const render = () => {
+            renderer.render(scene, camera);
+        }
         
+        animate();
+
+        
+
+
     </script>
 
     <style>
         body {
-            background-image: url("https://github.com/EnayetHossain/Earth/blob/main/public/texture/galaxy.png?raw=true");
+            background-color: #646464;
             background-attachment: fixed;
             margin: 0;
             padding: 0;
         }
 
         .fond {
-           
             color: white;
         }
 
         .botom {
             background-color: #504B4B;
-            height: 100px;
+            height: 130px;
         }
 
         .title {
-            
             color: white;
             text-align: center;
-            font-size: 500%;
+            font-size: 300%;
         }
 
         .hearth {
+        }
+
+        .webgl {
+            visibility: visible;
+            resize: block;
+            max-height: 595px;
+            max-width: 1250px;
         }
 
         .boutonmenuprincipal {
@@ -73,7 +176,6 @@
             color: white;
             border: none;
             cursor: pointer;
-            padding: 20px;
             font-size: 30px;
         }
 
@@ -102,23 +204,30 @@
         .dropdown:hover .dropdown-child {
             display: block;
         }
-        quiz{
-            
+
+        quiz {
         }
-        .center{
+
+        .center {
             display: flex;
             justify-content: center;
-
         }
-        .box div {
 
-            
+            .center a {
+                margin-top: 100px;
+            }
+
+            .center p {
+                color: white;
+                text-align: inherit;
+            }
+
+        .box div {
             width: 200px;
             display: inline-block;
             padding: 15px;
             text-align: center;
-            
-            color: #000000;
+            color: white;
             font-family: arial, sans-serif;
         }
 
@@ -140,166 +249,146 @@
 
         .yellow {
             background-color: yellow;
-
-
         }
-        #after_submit{
+
+        #after_submit {
             color: white;
-            visibility:hidden;
-        }    </style>
+            visibility: hidden;
+        }
+
+        .sidebar-navigation {
+            display: inline-block;
+            max-height: 1248px;
+            width: 200px;
+            background-color: slategrey;
+            float: left;
+        }
+
+            .sidebar-navigation a {
+            }
+
+        ul {
+            text-align: center;
+            color: white;
+        }
+
+        li {
+            padding: 28px 0;
+            cursor: pointer;
+            transition: all ease-out 120ms;
+        }
+
+        i {
+            display: block;
+            font-size: 24px;
+            transition: all ease 450ms;
+        }
+
+        .tooltip {
+            display: inline-block;
+            position: absolute;
+            background-color: slategrey;
+            padding: 8px 15px;
+            border-radius: 3px;
+            margin-top: -26px;
+            left: 90px;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 13px;
+            letter-spacing: 5px;
+        }
+        video{
+           position: absolute;
+           top:0;
+           left:0;
+           width:100%;
+           height:100%;
+           object-fit:cover;
+           opacity:0.8;
+           z-index:-5;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="banner">
+       <video src="video.mp4" autoplay loop></video>
+    </div>
     <div>
         <h1 class="title">
             Feed the world
         </h1>
     </div>
-    <div class="dropdown">
-        <button class="boutonmenuprincipal">|||</button>
-        <div class="dropdown-child">
-            <a href="#planete">Partie Planète</a>
-            <a href="#liste">Partie Liste plats</a>
-            <a href="#fin">Partie Conseil/fin</a>
-        </div>
-    </div>
+    
 
-    <div id="planete" class="fond">
+    <div id="planete" class="center">
 
         <canvas class="webgl"></canvas>
+        <nav class="sidebar-navigation">
+            <div class="center">
+                <div class="git">
+                    <a href="https://github.com/AzerX2/Hackaton" title="liengit">
+                        <img alt="exemple de texte alternatif" src="texture/gitlogo.png" width="100" height="100" /><br>
+                    </a>
+                </div>
+            </div>
+            <div class="center">
+
+                <a href="https://www.cihnef.org/" title="lien aso">
+                    <img alt="exemple de texte alternatif" src="texture/chinef.png" width="100" height="100" />
+                </a>
+               
+            </div>
+            
+        </nav>
+        <div class="dropdown">
+
+        </div>
     </div>
     <div class="fond">
-        <script type="module" language="javascript">
-            import * as THREE from '/build/three.module.js';
-            import { OrbitControls } from '/jsm/controls/OrbitControls.js';
-            import Stats from '/jsm/libs/stats.module.js';
-
-
-            let scene;
-            let camera;
-            let renderer;
-            const canvas = document.querySelector('.webgl');
-
-
-            scene = new THREE.Scene();
-
-
-            const fov = 100;
-            const aspect = window.innerWidth / window.innerHeight;
-            const near = 0.1;
-            const far = 100;
-
-            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-            camera.position.z = 5;
-            scene.add(camera);
-
-
-            renderer = new THREE.WebGLRenderer({
-                canvas: canvas,
-                antialias: true,
-            });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-            renderer.autoClear = false;
-            renderer.setClearColor(0x000000, 0.0);
-
-
-            const controls = new OrbitControls(camera, renderer.domElement);
-            controls.enableZoom = false;
-
-            const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
-            const earthMaterial = new THREE.MeshPhongMaterial({
-                roughness: 1,
-                metalness: 0,
-                map: THREE.ImageUtils.loadTexture('texture/map4.png')
-
-            });
-            const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
-            scene.add(earthMesh);
-
-            const starGeometry = new THREE.SphereGeometry(80, 64, 64);
-
-            
-            const starMaterial = new THREE.MeshBasicMaterial({
-                map: THREE.ImageUtils.loadTexture('texture/fond.png'),
-                side: THREE.BackSide
-            });
-
-            
-            const starMesh = new THREE.Mesh(starGeometry, starMaterial);
-            scene.add(starMesh);
-
-
-            const ambientlight = new THREE.AmbientLight(0xffffff, 1);
-            scene.add(ambientlight);
-            const pointLight = new THREE.PointLight(0xffffff, 0.1)
-            pointLight.position.set(5, 3, 5);
-            scene.add(pointLight);
-
-
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-                render();
-            }, false);
-
-
-
-            const animate = () => {
-                
-                requestAnimationFrame(animate);
-               
-                controls.update();
-                render();
-                stats.update();
-            };
-
-
-            const render = () => {
-                renderer.render(scene, camera);
-            }
-
-            animate();</script>
+    
     </div>
     
-    <script>
-        function resp() {
-            var question1 = document.quiz.plat1.value;
+    <script>function resp() {
             
+            var question1 = document.quiz.plat1.value;
+
             var correct = "neutral";
 
 
-            if (question1 == "a") {
-                correct="gagné"
+            if (question1 == "JAPON") {
+                correct = "gagné"
+
+
             }
             else {
-                   correct = "perdu"
+                correct = "perdu"
             }
 
             
+            
             document.getElementById("after_submit").style.visibility = "visible";
-            document.getElementById("number_correct").innerHTML = "Tu as " + correct +" UwU" ;
+            document.getElementById("number_correct").innerHTML = "Tu as " + correct + " UwU";
 
-        }
-
-    </script>
+        }</script>
    
-        <div class="center">
-            <div class="box">
-                <form id="quiz" name="quiz">
+    <div class="center">
+        <div class="box">
+            <form id="quiz" name="quiz">
 
+                
+                <div class="green" id="myData">
+                <a href=./Specialite/Ramen/Ramen.html title="ramen">
+                    <img alt="exemple de texte alternatif" src=https://www.thuisbezorgd.nl/foodwiki/uploads/2017/05/ramen-3-e1511359817885-1080x1080.jpg width="100" height="100" />
+                      </a>
+                <div class="center">Ramen : </div><input type="text" id="textbox" name="plat1" /></div>
 
-                    <div class="green" id="myData"> Plat 1 : <input type="text" id="textbox" name="plat1" /></div>
-
-                    <input id="button" type="button" value="terminé !" onclick="resp()" />
-                </form>
-            </div>
-            <div id="after_submit">
-                <p id="number_correct"></p>
-            </div>
+                <input id="button" type="button" value="terminé !" onclick="resp()" />
+            </form>
         </div>
+        
+        
+    </div>
 
 
 
@@ -310,7 +399,7 @@
     <div id=fin class="fond">
         presentation/fin
     </div>
-    <footer class="botom">YAY</footer>
+    
 
 </body>
 
