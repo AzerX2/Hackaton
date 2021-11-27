@@ -1,0 +1,43 @@
+.title{
+    color:black;
+    text-align: center;
+    font-size: 60;
+}
+
+
+.history div{
+    background-color: rgb(236, 234, 234);
+    width: 400px;
+    border: 2px solid black;
+    padding: 5px;
+    margin: auto;
+    font-family: arial, sans-serif;
+    text-align: center;
+    box-shadow: 0 0 10px 5px black;
+}
+
+.recipie div{
+    background-color: rgb(236, 234, 234);
+    width: 600px;
+    border: 2px solid black;
+    padding: 5px;
+    margin: auto;
+    font-family: arial, sans-serif;
+    box-shadow: 0 0 10px 5px black;
+}
+
+.assosRestos div{
+    background-color: rgb(236, 234, 234);
+    width: 300px;
+    border: 2px solid black;
+    padding: 5px;
+    margin-left: 16px;
+    font-family: arial, sans-serif;
+    box-shadow: 0 0 10px 5px black;
+    
+}
+
+.assosBox{
+    display: flex;
+    justify-content: center;
+}
