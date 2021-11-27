@@ -1,6 +1,76 @@
 <html>
 
 <head>
+
+    <script>
+        fetch('plat.json', {
+            method: 'post',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                appendData(data);
+                appendData2(data);
+                appendData3(data);
+                appendData4(data);
+                appendData5(data);
+            })
+            .catch(function(err) {
+                console.log('error: ' + err);
+            });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData1");
+            var i = getRandomInt(5)
+                var div = document.createElement("div");
+                div.innerHTML = 'Name: ' + data[i].name ;
+                mainContainer.appendChild(div);
+
+        }
+        function appendData2(data) {
+            var mainContainer = document.getElementById("myData2");
+            var i = getRandomInt(5)
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].name ;
+            mainContainer.appendChild(div);
+
+        }
+        function appendData3(data) {
+            var mainContainer = document.getElementById("myData3");
+            var i = getRandomInt(5)
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].name ;
+            mainContainer.appendChild(div);
+
+        }
+        function appendData4(data) {
+            var mainContainer = document.getElementById("myData4");
+            var i = getRandomInt(5)
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].name ;
+            mainContainer.appendChild(div);
+
+        }
+        function appendData5(data) {
+            var mainContainer = document.getElementById("myData5");
+            var i = getRandomInt(5)
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].name ;
+            mainContainer.appendChild(div);
+
+        }
+    </script>
+
+
+
     <style>
         body {
             background-color: black;
@@ -96,23 +166,23 @@
             <a href="#fin">Partie Conseil/fin</a>
         </div>
     </div>
-    <div id="planete" class="fond">
-        <p>la planete</p>
+    <div id="planete">
+        <p class="fond">la planete</p>
     </div>
     <div id="liste">
-        <h2>Liste des plats</h2>
-        <div class="box">
-            <div class="green">plat 1</div>
-            <div class="blue">plat 2</div>
-            <div class="gray">plat 3</div>
-            <div class="pink">plat 4</div>
-            <div class="yellow">plat 5</div>
-            <div class="green">plat 6</div>
-            <div class="blue">plat 7</div>
-            <div class="gray">plat 8</div>
-            <div class="pink">plat 9</div>
-            <div class="yellow">plat 10</div>
+
+        <h2 class="fond">Liste des plats</h2>
+        <div class="box">>
+
+
+            <div class="green" id="myData1" > Plat 1 : </div>
+            <div class="blue" id="myData2" >plat 2 : </div>
+            <div class="gray" id="myData3">plat 3 : </div>
+            <div class="pink" id="myData4">plat 4 : </div>
+            <div class="yellow" id="myData5">plat 5 : </div>
+
         </div>
+
 
 
     </div>
