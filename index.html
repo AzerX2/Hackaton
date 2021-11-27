@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        .fond {
+            background-color: blue;
+        }
+        
+        .boutonmenuprincipal {
+            background-color: #e83737;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 30px;
+        }
+        
+        .boutonmenuprincipal:hover {
+            background-color: #ff4444;
+        }
+        
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-child {
+            display: none;
+            background-color: #f28c8c;
+            min-width: 50px;
+        }
+        
+        .dropdown-child a {
+            color: white;
+            padding: 20px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown:hover .dropdown-child {
+            display: block;
+        }
+        
+        .box div {
+            width: 100px;
+            display: inline-block;
+            padding: 15px;
+            text-align: center;
+            color: #000000;
+            font-family: arial, sans-serif;
+        }
+        
+        .green {
+            background-color: green;
+        }
+        
+        .blue {
+            background-color: blue;
+        }
+        
+        .gray {
+            background-color: gray;
+        }
+        
+        .pink {
+            background-color: pink;
+        }
+        
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <title> Feed the world </title>
+
+</head>
+
+<body class="body">
+
+    <div>
+        <h1 class="fond">
+            Feed the world
+        </h1>
+    </div>
+    <div class="dropdown">
+        <button class="boutonmenuprincipal">\\\</button>
+        <div class="dropdown-child">
+            <a href="#planete">Partie Planète</a>
+            <a href="#liste">Partie Liste plats</a>
+            <a href="#fin">Partie Conseil/fin</a>
+        </div>
+    </div>
+    <div id="planete" class="fond">
+        <p>la planete</p>
+    </div>
+    <div id="liste">
+        <h2>Liste des plats</h2>
+        <div class="box">
+            <div class="green">plat 1</div>
+            <div class="blue">plat 2</div>
+            <div class="gray">plat 3</div>
+            <div class="pink">plat 4</div>
+            <div class="yellow">plat 5</div>
+            <div class="green">plat 6</div>
+            <div class="blue">plat 7</div>
+            <div class="gray">plat 8</div>
+            <div class="pink">plat 9</div>
+            <div class="yellow">plat 10</div>
+        </div>
+
+
+    </div>
+    <div id=fin class="fond">
+        <p>presentation/fin</p>
+    </div>
+</body>
+
+</html>
