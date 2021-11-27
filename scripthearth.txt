@@ -1,0 +1,84 @@
+<script type="module" language="javascript" type="text/javascript"  >
+        import * as THREE from '/build/three.module.js';
+        import { OrbitControls } from '/jsm/controls/OrbitControls.js';
+        import Stats from '/jsm/libs/stats.module.js';
+
+       
+        let scene;
+        let camera;
+        let renderer;
+        const canvas = document.querySelector('.webgl');
+
+       
+        scene = new THREE.Scene();
+
+        
+        const fov = 40;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 0.1;
+        const far = 10000;
+
+        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.position.z = 5;
+        scene.add(camera);
+
+        
+        renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+        renderer.autoClear = false;
+        renderer.setClearColor(0x000000, 0.0);
+
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+
+        
+        const earthGeometry = new THREE.SphereGeometry(0.6, 32, 32);
+
+       
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            roughness: 1,
+            metalness: 0,
+            map: THREE.ImageUtils.loadTexture('texture/map3.png'),
+
+        });
+
+        
+        const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+        scene.add(earthMesh);
+
+
+        
+        const ambientlight = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(ambientlight);
+
+        
+        const pointLight = new THREE.PointLight(0xffffff,0.5)
+        pointLight.position.set(5, 3, 5);
+        scene.add(pointLight);
+
+
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            render();
+        }, false);
+
+        const animate = () => {
+            requestAnimationFrame(animate);
+            controls.update();
+            render();
+            stats.update();
+        };
+
+  
+        const render = () => {
+            renderer.render(scene, camera);
+        }
+
+        animate();</script>
