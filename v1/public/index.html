@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Feed the world </title>
+    <script>
+        fetch('plat.json', {
+            method: 'post',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                appendData(data);
+                
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData");
+            var i = getRandomInt(5)
+            var div = document.createElement("div");
+            div.innerHTML = 'Name: ' + data[i].name;
+            mainContainer.appendChild(div);
+
+        }
+        
+    </script>
+
+    <style>
+        body {
+            background-image: url("https://github.com/EnayetHossain/Earth/blob/main/public/texture/galaxy.png?raw=true");
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fond {
+           
+            color: white;
+        }
+
+        .botom {
+            background-color: #504B4B;
+            height: 100px;
+        }
+
+        .title {
+            
+            color: white;
+            text-align: center;
+            font-size: 500%;
+        }
+
+        .hearth {
+        }
+
+        .boutonmenuprincipal {
+            background-color: slategrey;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+            .boutonmenuprincipal:hover {
+                background-color: lightsteelblue;
+            }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-child {
+            display: none;
+            background-color: lightsteelblue;
+            min-width: 50px;
+        }
+
+            .dropdown-child a {
+                color: white;
+                padding: 20px;
+                text-decoration: none;
+                display: block;
+            }
+
+        .dropdown:hover .dropdown-child {
+            display: block;
+        }
+        quiz{
+            
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+
+        }
+        .box div {
+
+            
+            width: 200px;
+            display: inline-block;
+            padding: 15px;
+            text-align: center;
+            
+            color: #000000;
+            font-family: arial, sans-serif;
+        }
+
+        .green {
+            background-color: darkgrey;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .pink {
+            background-color: pink;
+        }
+
+        .yellow {
+            background-color: yellow;
+
+
+        }
+        #after_submit{
+            color: white;
+            visibility:hidden;
+        }    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="title">
+            Feed the world
+        </h1>
+    </div>
+    <div class="dropdown">
+        <button class="boutonmenuprincipal">|||</button>
+        <div class="dropdown-child">
+            <a href="#planete">Partie Planète</a>
+            <a href="#liste">Partie Liste plats</a>
+            <a href="#fin">Partie Conseil/fin</a>
+        </div>
+    </div>
+
+    <div id="planete" class="fond">
+
+        <canvas class="webgl"></canvas>
+    </div>
+    <div class="fond">
+        <script type="module" language="javascript">
+            import * as THREE from '/build/three.module.js';
+            import { OrbitControls } from '/jsm/controls/OrbitControls.js';
+            import Stats from '/jsm/libs/stats.module.js';
+
+
+            let scene;
+            let camera;
+            let renderer;
+            const canvas = document.querySelector('.webgl');
+
+
+            scene = new THREE.Scene();
+
+
+            const fov = 100;
+            const aspect = window.innerWidth / window.innerHeight;
+            const near = 0.1;
+            const far = 100;
+
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.z = 5;
+            scene.add(camera);
+
+
+            renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+            renderer.autoClear = false;
+            renderer.setClearColor(0x000000, 0.0);
+
+
+            const controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableZoom = false;
+
+            const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
+            const earthMaterial = new THREE.MeshPhongMaterial({
+                roughness: 1,
+                metalness: 0,
+                map: THREE.ImageUtils.loadTexture('texture/map4.png')
+
+            });
+            const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+            scene.add(earthMesh);
+
+            const starGeometry = new THREE.SphereGeometry(80, 64, 64);
+
+            
+            const starMaterial = new THREE.MeshBasicMaterial({
+                map: THREE.ImageUtils.loadTexture('texture/fond.png'),
+                side: THREE.BackSide
+            });
+
+            
+            const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+            scene.add(starMesh);
+
+
+            const ambientlight = new THREE.AmbientLight(0xffffff, 1);
+            scene.add(ambientlight);
+            const pointLight = new THREE.PointLight(0xffffff, 0.1)
+            pointLight.position.set(5, 3, 5);
+            scene.add(pointLight);
+
+
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                render();
+            }, false);
+
+
+
+            const animate = () => {
+                
+                requestAnimationFrame(animate);
+               
+                controls.update();
+                render();
+                stats.update();
+            };
+
+
+            const render = () => {
+                renderer.render(scene, camera);
+            }
+
+            animate();</script>
+    </div>
+    
+    <script>
+        function resp() {
+            var question1 = document.quiz.plat1.value;
+            
+            var correct = "neutral";
+
+
+            if (question1 == "a") {
+                correct="gagné"
+            }
+            else {
+                   correct = "perdu"
+            }
+
+            
+            document.getElementById("after_submit").style.visibility = "visible";
+            document.getElementById("number_correct").innerHTML = "Tu as " + correct +" UwU" ;
+
+        }
+
+    </script>
+   
+        <div class="center">
+            <div class="box">
+                <form id="quiz" name="quiz">
+
+
+                    <div class="green" id="myData"> Plat 1 : <input type="text" id="textbox" name="plat1" /></div>
+
+                    <input id="button" type="button" value="terminé !" onclick="resp()" />
+                </form>
+            </div>
+            <div id="after_submit">
+                <p id="number_correct"></p>
+            </div>
+        </div>
+
+
+
+    
+
+
+    
+    <div id=fin class="fond">
+        presentation/fin
+    </div>
+    <footer class="botom">YAY</footer>
+
+</body>
+
+</html>

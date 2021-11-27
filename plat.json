@@ -1,0 +1,31 @@
+[{
+    "id": "1",
+    "name": "plat1",
+    "image": "image"
+},{
+    "id": "2",
+    "name": "plat2",
+    "image": "image"
+},{
+    "id": "3",
+    "name": "plat3",
+    "image": "image"
+},{
+    "id": "4",
+    "name": "plat4",
+    "image": "image"
+},
+    {
+        "id": "5",
+        "name": "plat5",
+        "image": "image"
+    },{
+    "id": "6",
+    "name": "plat6",
+    "image": "image"
+},{
+    "id": "7",
+    "name": "plat7",
+    "image": "image"
+}
+]

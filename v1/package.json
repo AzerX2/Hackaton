@@ -1,0 +1,24 @@
+{
+  "name": "earth",
+  "version": "1.0.0",
+  "description": "an earth",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnayetHossain/Earth.git"
+  },
+  "author": "Robinou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnayetHossain/Earth/issues"
+  },
+  "homepage": "https://github.com/EnayetHossain/Earth#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "three": "^0.127.0"
+  }
+}
