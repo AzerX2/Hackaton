@@ -7,37 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href=texture/logo.png>
     <title> Feed the world </title>
-    <script type="module" language="javascript">
-        fetch('plat.json', {
-            method: 'post',
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                appendData(data);
-
-            })
-            .catch(function (err) {
-                console.log('error: ' + err);
-            });
-
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
-
-        function appendData(data) {
-            var mainContainer = document.getElementById("myData");
-            var i = getRandomInt(5)
-            var div = document.createElement("div");
-            div.innerHTML = 'Name: ' + data[i].name;
-            mainContainer.appendChild(div);
-
-        }
-
+    
+     <script type="module" language="javascript">
         import * as THREE from '/build/three.module.js';
         import { OrbitControls } from '/jsm/controls/OrbitControls.js';
         import Stats from '/jsm/libs/stats.module.js';
@@ -130,10 +101,10 @@
         const render = () => {
             renderer.render(scene, camera);
         }
-        
+
         animate();
 
-        
+
 
 
     </script>
@@ -225,11 +196,11 @@
             }
 
         .box div {
-            background-image: url(./Specialite/Ramen/Ramen.jpg);
+            
             font-family: sans-serif;
             width: 200px;
             display: inline-block;
-            padding: 15px;
+            
             text-align: center;
             color: white;
             font-family: arial, sans-serif;
@@ -240,7 +211,8 @@
         }
 
         .blue {
-            background-color: blue;
+            max-height:100px;
+            max-width:100px;
         }
 
         .gray {
@@ -330,14 +302,14 @@
 
 <body>
     <div class="banner">
-       <video  src="video4.mp4"  autoplay muted  loop></video>
+        <video src="video4.mp4" autoplay muted loop></video>
     </div>
     <div>
         <h1 class="title">
             Feed the world
         </h1>
     </div>
-    
+
 
     <div id="planete" class="center">
 
@@ -368,17 +340,62 @@
         </div>
     </div>
     <div class="fond">
-    
-    </div>
-    
-    <script>function resp() {
-            
-            var question1 = document.quiz.plat1.value;
 
+    </div>
+
+    <script>
+        let i = getRandomInt(10);
+        let plats = [];
+        fetch('plat.json', {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                plats = [...data];
+                appendData(data);
+            })
+            .catch(function (err) {
+                console.log('error: ' + err);
+            });
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+        
+        
+        
+        function appendData(data) {
+            var mainContainer = document.getElementById("myData1");
+            
+            var div = document.createElement("div");
+            div.innerHTML =data[i].name;
+            mainContainer.appendChild(div);
+
+            var img = document.createElement("img");
+            img.src = data[i].image;
+            document.getElementById("imageDiv").appendChild(img);
+
+            var mainContainer2 = document.getElementById("myData2");
+            var div2 = document.createElement("div");
+            div2.innerHTML =data[i].pays;
+            mainContainer2.appendChild(div);
+
+        }
+        function resp() {
+            
+
+            var question1 = document.quiz.plat.value;
+
+            var reponse = plats[i].pays;
             var correct = "neutral";
 
 
-            if (question1 == "JAPON") {
+            if (question1 == reponse) {
                 correct = "gagné"
 
 
@@ -387,48 +404,61 @@
                 correct = "perdu"
             }
 
-            
-            
+
+
+
             document.getElementById("after_submit").style.visibility = "visible";
             document.getElementById("number_correct").innerHTML = "Tu as " + correct + " UwU";
 
-        }</script>
-   
+        }
+      
+        </script>
+
     <div class="center">
         <div class="box">
-            <form id="quiz" name="quiz">
 
-                
-                <div class="green" id="myData">
-                <a href=./Specialite/Ramen/Ramen.html title="ramen">
-                    <img alt="exemple de texte alternatif" src=https://www.thuisbezorgd.nl/foodwiki/uploads/2017/05/ramen-3-e1511359817885-1080x1080.jpg width="130" height="100" />
-                      </a>
-                <div class="center">Ramen : </div><input type="text" id="textbox" name="plat1" /></div>
+            
+            <div class="green" id="myData1">
 
-                <div id="container">
-                    <button class="learn-more">
-                        <span class="circle" aria-hidden="true">
-                            <span class="icon arrow"></span>
-                        </span>
-                        <span class="button-text">Learn More</span>
-                    </button>
-                </div>
+                <div id="imageDiv"></div>
+                <a href="/Specialite/Japon/Ramen.html" title="ramen">Name : </a>
+            </div>
+            <form id="quiz" name="quiz" class="box">
+
+
+
+
+                <input type="text" id="textbox" name="plat" />
+
+
             </form>
+            <input id="button" type="button" value="Je sais !!" onclick="resp();" /><div id="after_submit">
+    <p id="message"></p>
+    <p id="number_correct"></p>
+</div>
+
+
+
+
         </div>
-        
-        
-    </div>
 
-
-
-    
+        </div>
 
 
     
+    
+
+
+
+
+
+
+
+
     <div id=fin class="fond">
-       ba_ro² hackaton 2021
+        ba_ro² hackaton 2021
     </div>
-    
+
 
 </body>
 

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "ramen",
+    "image": "Specialite/Japon/plat4.jpeg",
+    "pays": "japon",
+    "lien": "Specialite/Etats_unis/Hamburger.html"
+  },
+  {
+    "id": "2",
+    "name": "feijoada",
+    "image": "Specialite/Bresil/plat4.jpeg",
+    "pays": "bresil",
+    "lien": "Specialite/Etats_unis/Hamburger.html"
+  },
+  {
+    "id": "3",
+    "name": "poutine",
+    "image": "Specialite/Canada/plat4.jpeg",
+    "pays": "canada",
+    "lien": "Specialite/Etats_unis/Hamburger.html"
+  },
+  {
+    "id": "4",
+    "name": "couscous",
+    "image": "Specialite/Maroc/plat4.jpeg",
+    "pays": "maroc",
+    "lien": "Specialite/Etats_unis/Hamburger.html"
+  },
+  {
+    "id": "5",
+    "name": "hamburger",
+    "image": "Specialite/Etats_unis/plat4.jpeg",
+    "pays": "etats-unis",
+    "lien": "Specialite/Etats_unis/Hamburger.html"
+
+  },{
+    "id": "6",
+    "name": "tandoori",
+    "image": "Specialite/Inde/plat4.jpeg",
+    "pays": "inde"    
+},{
+    "id": "7",
+    "name": "tortilla",
+    "image": "Specialite/Espagne/plat4.jpeg",
+    "pays": "espagne"    
+},{
+    "id": "8",
+    "name": "bibimbap",
+    "image": "Specialite/Coree/plat4.jpeg",
+    "pays": "coree"    
+},{
+    "id": "9",
+    "name": "ceviche",
+    "image": "Specialite/Perou/plat4.jpeg",
+    "pays": "perou"    
+},{
+    "id": "10",
+    "name": "huitre",
+    "image": "Specialite/France/plat4.jpeg",
+    "pays": "france"    
+}]
