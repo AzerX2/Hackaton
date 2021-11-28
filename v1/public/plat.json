@@ -4,59 +4,101 @@
     "name": "ramen",
     "image": "Specialite/Japon/plat4.jpeg",
     "pays": "japon",
-    "lien": "Specialite/Etats_unis/Hamburger.html"
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "-2.970993391457923",
+    "y": "2.960239165246481",
+    "z": "-2.5798798759851334"
   },
   {
     "id": "2",
     "name": "feijoada",
     "image": "Specialite/Bresil/plat4.jpeg",
     "pays": "bresil",
-    "lien": "Specialite/Etats_unis/Hamburger.html"
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "2.532902187834414",
+    "y": "-1.144816404006357",
+    "z": "3.832888252425368"
   },
   {
     "id": "3",
     "name": "poutine",
     "image": "Specialite/Canada/plat4.jpeg",
     "pays": "canada",
-    "lien": "Specialite/Etats_unis/Hamburger.html"
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "-0.3954155980418904",
+    "y": "3.813569582317446",
+    "z": "2.4558709554307905"
   },
   {
     "id": "4",
     "name": "couscous",
     "image": "Specialite/Maroc/plat4.jpeg",
     "pays": "maroc",
-    "lien": "Specialite/Etats_unis/Hamburger.html"
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "2.926223452009159",
+    "y": "1.486393560204277",
+    "z": "0.5832923444037277"
   },
   {
     "id": "5",
     "name": "hamburger",
     "image": "Specialite/Etats_unis/plat4.jpeg",
     "pays": "etats-unis",
-    "lien": "Specialite/Etats_unis/Hamburger.html"
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "-0.15839738643088724",
+    "y": "2.067247775113136",
+    "z": "2.8094966421317937"
 
-  },{
+  },
+  {
     "id": "6",
     "name": "tandoori",
     "image": "Specialite/Inde/plat4.jpeg",
-    "pays": "inde"    
-},{
+    "pays": "inde",
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "1.1804911694625662",
+    "y": "1.519210543653122",
+    "z": "-4.58329333324983",
+    "merci<3": "Kracks"
+  },
+  {
     "id": "7",
     "name": "tortilla",
     "image": "Specialite/Espagne/plat4.jpeg",
-    "pays": "espagne"    
-},{
+    "pays": "espagne",
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "3.759045394455687",
+    "y": "3.2363517574949636",
+    "z": "0.606298730169963"
+  },
+  {
     "id": "8",
     "name": "bibimbap",
     "image": "Specialite/Coree/plat4.jpeg",
-    "pays": "coree"    
-},{
+    "pays": "coree",
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "-2.559138298501641",
+    "y": "2.7452961742421698",
+    "z": "-3.1221609137776927"
+  },
+  {
     "id": "9",
     "name": "ceviche",
     "image": "Specialite/Perou/plat4.jpeg",
-    "pays": "perou"    
-},{
+    "pays": "perou",
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "1.2353662305707458",
+    "y": "-0.8833969384459928",
+    "z": "4.441623799334647"
+  },
+  {
     "id": "10",
     "name": "huitre",
     "image": "Specialite/France/plat4.jpeg",
-    "pays": "france"    
-}]
+    "pays": "france",
+    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "x": "3.488933239780292",
+    "y": "3.5847617371362306",
+    "z": "0.2635742660730065"
+
+  }]

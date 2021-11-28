@@ -8,107 +8,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href=texture/logo.png>
     <title> Feed the world </title>
     
-     <script type="module" language="javascript">
-        import * as THREE from '/build/three.module.js';
-        import { OrbitControls } from '/jsm/controls/OrbitControls.js';
-        import Stats from '/jsm/libs/stats.module.js';
+     
+        
 
-
-        let scene;
-        let camera;
-        let renderer;
-        const canvas = document.querySelector('.webgl');
-
-
-        scene = new THREE.Scene();
-
-
-        const fov = 80;
-        const aspect = window.innerWidth / window.innerHeight;
-        const near = 0.1;
-        const far = 100;
-
-        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera.position.z = 5;
-        scene.add(camera);
-
-
-        renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-        });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-        renderer.autoClear = false;
-        renderer.setClearColor(0x000000, 0.0);
-
-
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableZoom = false;
-
-        var map = 'texture/map5.png';
-        const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
-        const earthMaterial = new THREE.MeshPhongMaterial({
-            roughness: 1,
-            metalness: 0,
-            map: THREE.ImageUtils.loadTexture(map)
-
-        });
-        const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
-        scene.add(earthMesh);
-
-
-        const starGeometry = new THREE.SphereGeometry(80, 64, 64);
-
-
-        const starMaterial = new THREE.MeshBasicMaterial({
-            map: THREE.ImageUtils.loadTexture('texture/fond.png'),
-            side: THREE.BackSide
-        });
-
-
-        const starMesh = new THREE.Mesh(starGeometry, starMaterial);
-        scene.add(starMesh);
-
-
-        const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientlight);
-        const pointLight = new THREE.PointLight(0xffffff, 1)
-        pointLight.position.set(5, 3, 5);
-        scene.add(pointLight);
-
-
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            render();
-        }, false);
-
-
-
-        const animate = () => {
-
-            requestAnimationFrame(animate);
-
-            controls.update();
-            render();
-            stats.update();
-        };
-
-
-        const render = () => {
-            renderer.render(scene, camera);
-        }
-
-        animate();
+        
 
 
 
 
-    </script>
-
+    
     <style>
         body {
             background-color: #646464;
@@ -200,9 +108,9 @@
             font-family: sans-serif;
             width: 200px;
             display: inline-block;
-            
+            font-size:large;
             text-align: center;
-            color: white;
+            color: black;
             font-family: arial, sans-serif;
         }
 
@@ -210,10 +118,37 @@
             background-color: darkgrey;
         }
 
-        .blue {
-            max-height:100px;
-            max-width:100px;
+        .blue1 {
+            visibility:hidden;
         }
+        .blue2 {
+            visibility: hidden;
+        }
+        .blue3 {
+            visibility: hidden;
+        }
+        .blue4 {
+            visibility: hidden;
+        }
+        .blue5 {
+            visibility: hidden;
+        }
+        .blue6 {
+            visibility: hidden;
+        }
+        .blue7 {
+            visibility: hidden;
+        }
+        .blue8 {
+            visibility: hidden;
+        }
+        .blue9 {
+            visibility: hidden;
+        }
+        .blue10 {
+            visibility: hidden;
+        }
+
 
         .gray {
             background-color: gray;
@@ -301,6 +236,7 @@
 </head>
 
 <body>
+
     <div class="banner">
         <video src="video4.mp4" autoplay muted loop></video>
     </div>
@@ -343,8 +279,106 @@
 
     </div>
 
-    <script>
+
+    <script type="module" language="javascript">
+
+        import * as THREE from '/build/three.module.js';
+        import { OrbitControls } from '/jsm/controls/OrbitControls.js';
+        import Stats from '/jsm/libs/stats.module.js';
+
         let i = getRandomInt(10);
+        let scene;
+        let camera;
+        let renderer;
+        const canvas = document.querySelector('.webgl');
+
+
+        scene = new THREE.Scene();
+
+
+        const fov = 100;
+        const aspect = window.innerWidth / window.innerHeight;
+        const near = 0.1;
+        const far = 100;
+
+        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera.position.z = 5;
+        scene.add(camera);
+
+
+        renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+        renderer.autoClear = false;
+        renderer.setClearColor(0x000000, 0.0);
+
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableZoom = true;
+
+        var map = 'texture/map5.png';
+        const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            roughness: 1,
+            metalness: 0,
+            map: THREE.ImageUtils.loadTexture(map)
+
+        });
+        const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+        scene.add(earthMesh);
+
+
+        const starGeometry = new THREE.SphereGeometry(80, 64, 64);
+
+
+        const starMaterial = new THREE.MeshBasicMaterial({
+            map: THREE.ImageUtils.loadTexture('texture/fond.png'),
+            side: THREE.BackSide
+        });
+
+
+        const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+        scene.add(starMesh);
+
+
+        const ambientlight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientlight);
+        const pointLight = new THREE.PointLight(0xffffff, 1)
+        pointLight.position.set(5, 3, 5);
+        scene.add(pointLight);
+
+
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            render();
+        }, false);
+
+
+
+        const animate = () => {
+
+            requestAnimationFrame(animate);
+
+            controls.update();
+            render();
+            //stats.update();
+        };
+
+
+        const render = () => {
+            renderer.render(scene, camera);
+        }
+
+
+        animate();
+
+
         let plats = [];
         fetch('plat.json', {
             method: 'GET',
@@ -366,14 +400,14 @@
         function getRandomInt(max) {
             return Math.floor(Math.random() * max);
         }
-        
-        
-        
+
+
+
         function appendData(data) {
             var mainContainer = document.getElementById("myData1");
-            
+
             var div = document.createElement("div");
-            div.innerHTML =data[i].name;
+            div.innerHTML = data[i].name;
             mainContainer.appendChild(div);
 
             var img = document.createElement("img");
@@ -382,18 +416,43 @@
 
             var mainContainer2 = document.getElementById("myData2");
             var div2 = document.createElement("div");
-            div2.innerHTML =data[i].pays;
+            div2.innerHTML = data[i].pays;
             mainContainer2.appendChild(div);
 
-        }
-        function resp() {
-            
+            //ocument.getElementById("hyper80").value = plats[i].lien;
 
+
+
+
+
+
+
+
+
+        }
+        /*function cam() {
+            var x = plats[i].x;
+             var y = plats[i].y;
+             var z = plats[i].z;
+
+             console.log(camera.position)
+             camera.position.set(x, y, z);
+         }
+         document.getElementById("button").addEventListener("click", (e) => {
+             e.preventDefault();
+             cam();
+         })*/
+        function resp() {
+
+            var x = plats[i].x;
+            var y = plats[i].y;
+            var z = plats[i].z;
             var question1 = document.quiz.plat.value;
 
             var reponse = plats[i].pays;
+            var wichone = plats[i].id;
             var correct = "neutral";
-
+            
 
             if (question1 == reponse) {
                 correct = "gagné"
@@ -406,60 +465,90 @@
 
 
 
-
+            
             document.getElementById("after_submit").style.visibility = "visible";
-            document.getElementById("number_correct").innerHTML = "Tu as " + correct + " UwU";
+            document.getElementById("number_correct").innerHTML = "Réponse : " + reponse + ". Tu as " + correct + ", Regarde un peut la carte c'est juste la ;)";
+            document.getElementById(wichone).style.visibility = "visible";
+            camera.position.set(x, y, z);
+            pointLight.position.set(x, y, z);
+            camera.fov = 35;
+            camera.updateProjectionMatrix();
+
 
         }
-      
-        </script>
+        document.getElementById("button").addEventListener("click", (e) => {
+            e.preventDefault();
+            resp();
+        })
 
+
+
+
+
+
+    </script>
+    
     <div class="center">
         <div class="box">
 
-            
+
             <div class="green" id="myData1">
-
-                <div id="imageDiv"></div>
-                <a href="/Specialite/Japon/Ramen.html" title="ramen">Name : </a>
+                <div class="box" id="after_submit">
             </div>
-            <form id="quiz" name="quiz" class="box">
+                <div class="box" id="imageDiv"></div>
+                <div class="box" id="myData3">
+                    <a id="hypertext" title="name">(lettres minuscules)Name :</a>
+                </div>
+                <form id="quiz" name="quiz" class="box">
 
 
 
 
-                <input type="text" id="textbox" name="plat" />
+                    <input type="text" id="textbox" name="plat" />
 
 
-            </form>
-            <input id="button" type="button" value="Je sais !!" onclick="resp();" /><div id="after_submit">
+                </form>
+
+                <input id="button" type="button" value="Je sais !!" />
+
     <p id="message"></p>
+
     <p id="number_correct"></p>
-</div>
+    <a href="Specialite/Etats_unis/Hamburger.html" class="blue5" id="5">Hamburger</a>
+    <a href="Specialite/Japon/Ramen.html" class="blue1" id="1">Ramen</a>
+    <a href="Specialite/Maroc/Couscous.html" class="blue4" id="4">Couscous</a>
+    <a href="Specialite/Canada/Poutine.html" class="blue3" id="3">Poutine</a>
+    <a href="Specialite/Inde/Tandoori.html" class="blue6" id="6">Tandoori</a>
+    <a href="Specialite/Perou/Ceviche.html" class="blue9" id="9">Ceviche</a>
+    <a href="Specialite/Bresil/Feijoada.html" class="blue2" id="2">Faijoda</a>
+    <a href="Specialite/Coree/Bibimbap.html" class="blue8" id="8">Bibimap</a>
+    <a href="Specialite/France/Huitres.html" class="blue10" id="10">Huitre</a>
+    <a href="Specialite/Espagne/Tortilla.html" class="blue7" id="7">Tortilla</a>
 
 
 
 
+            </div>
         </div>
 
-        </div>
-
-
-    
-    
-
-
-
-
-
-
-
-
-    <div id=fin class="fond">
-        ba_ro² hackaton 2021
     </div>
 
 
-</body>
 
+
+
+
+
+
+
+
+
+
+    
+
+
+</body>
+<div id=fin class="fond">
+    ba_ro² hackaton 2021
+</div>
 </html>
