@@ -286,7 +286,7 @@
         import { OrbitControls } from '/jsm/controls/OrbitControls.js';
         import Stats from '/jsm/libs/stats.module.js';
 
-        let i = getRandomInt(10);
+        let i = getRandomInt(11);
         let scene;
         let camera;
         let renderer;
@@ -442,6 +442,33 @@
              e.preventDefault();
              cam();
          })*/
+         
+        const space = [" ", "_", "-"];
+        const eLetter = ["é", "e", "è", "ë", "ê"];
+        const iLetter = ["i", "î", "ï"];
+
+        function convert(word) {
+            let res = "";
+            for (let k = 0; k < word.length; k++) {
+                let char = word[k];
+                let ascii = char.charCodeAt();
+
+                if (space.includes(char)){
+                    res += "-"
+                } else if (eLetter.includes(char)){
+                    res += "e"
+                }else if (iLetter.includes(char)){
+                    res += "i"
+                } else if (97 <= ascii && ascii <= 122){
+                    res += char;
+                } else if (65 <= ascii && ascii <= 90){
+                    res += String.fromCharCode(ascii + 32);
+                }
+            }
+            return res;
+        }
+
+
         function resp() {
 
             var x = plats[i].x;
@@ -454,10 +481,8 @@
             var correct = "neutral";
             
 
-            if (question1 == reponse) {
+            if (convert(question1) == reponse) {
                 correct = "gagné"
-
-
             }
             else {
                 correct = "perdu"
@@ -524,6 +549,7 @@
     <a href="Specialite/Coree/Bibimbap.html" class="blue8" id="8">Bibimap</a>
     <a href="Specialite/France/Huitres.html" class="blue10" id="10">Huitre</a>
     <a href="Specialite/Espagne/Tortilla.html" class="blue7" id="7">Tortilla</a>
+    <a href="Specialite/Afrique_du_sud/Bobotie.html" class="blue7" id="11">Tortilla</a>
 
 
 

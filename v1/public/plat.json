@@ -96,9 +96,18 @@
     "name": "huitre",
     "image": "Specialite/France/plat4.jpeg",
     "pays": "france",
-    "lien": "Specialite/Etats_unis/Hamburger.html",
+    "lien": "Specialite/France/Huitres.html",
     "x": "3.488933239780292",
     "y": "3.5847617371362306",
     "z": "0.2635742660730065"
-
+  },
+  {
+    "id": "11",
+    "name": "bobotie",
+    "image": "Specialite/Afrique_du_sud/plat4.jpeg",
+    "pays": "afrique-du-sud",
+    "lien": "Specialite/Afrique_du_sud/Bobotie.html",
+    "x": "3.488933239780292",
+    "y": "3.5847617371362306",
+    "z": "0.2635742660730065"
   }]
