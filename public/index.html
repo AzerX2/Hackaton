@@ -23,6 +23,7 @@
             background-attachment: fixed;
             margin: 0;
             padding: 0;
+            overflow:hidden;		
         }
 
         .fond {
@@ -248,13 +249,11 @@
 
 
     <div id="planete" class="center">
-
-        <canvas class="webgl"></canvas>
-        <nav class="sidebar-navigation">
+<nav class="sidebar-navigation">
             <div class="center">
                 <div class="git">
                     <a href="https://github.com/AzerX2/Hackaton" title="liengit">
-                        <img alt="liengit" src="texture/gitlogo.png" width="100" height="100" /><br>
+                        <img alt="liengit" src="https://images-ext-2.discordapp.net/external/pGKcBXXH448OvuTDxT23XCxVwpHmJ7uil2muILsQk5Y/%3Frik%3DEyUQGBjtSbMjVw%26riu%3Dhttp%253a%252f%252fpngimg.com%252fuploads%252fgithub%252fgithub_PNG80.png%26ehk%3DsCQlSHnb7Wc8WNPgOilokXbf8jL4g20yv7QFEFpl6ko%253d%26risl%3D%26pid%3DImgRaw%26r%3D0/https/th.bing.com/th/id/R.734888c84d95d28b36728ac33186cab3?width=661&height=670" width="100" height="100" /><br>
                     </a>
                 </div>
             </div>
@@ -266,14 +265,58 @@
 
             </div>
             <div class="center">
-                <a href=texture/soutien.png title="ramen">
+                <a href=http://www.leetchi.com/c/feedtheworld title="ramen">
                     <img alt="exemple de texte alternatif" src=texture/soutien.png width="130" height="100" />
                 </a>
             </div>
         </nav>
-        <div class="dropdown">
+        <canvas class="webgl"></canvas>
+        <div class="center">
+        <div class="box">
 
+
+            <div class="green" id="myData1">
+                <div class="box" id="after_submit">
+            </div>
+                <div class="box" id="imageDiv"></div>
+                <div class="box" id="myData3">
+                    <a id="hypertext" title="name">Appuyez sur entrée pour changer le plat, Pays :</a>
+                </div>
+                <form id="quiz" name="quiz" class="box">
+
+
+
+
+                    <input type="text" id="textbox" name="plat" />
+
+
+                </form>
+
+                <input id="button" type="button" value="Je sais !!" />
+
+    <p id="message"></p>
+
+    <p id="number_correct"></p>
+    <a href="Specialite/Etats_unis/Hamburger.html" class="blue5" id="5">Hamburger</a>
+    <a href="Specialite/Japon/Ramen.html" class="blue1" id="1">Ramen</a>
+    <a href="Specialite/Maroc/Couscous.html" class="blue4" id="4">Couscous</a>
+    <a href="Specialite/Canada/Poutine.html" class="blue3" id="3">Poutine</a>
+    <a href="Specialite/Inde/Tandoori.html" class="blue6" id="6">Tandoori</a>
+    <a href="Specialite/Perou/Ceviche.html" class="blue9" id="9">Ceviche</a>
+    <a href="Specialite/Bresil/Feijoada.html" class="blue2" id="2">Faijoda</a>
+    <a href="Specialite/Coree/Bibimbap.html" class="blue8" id="8">Bibimap</a>
+    <a href="Specialite/France/Huitres.html" class="blue10" id="10">Huitre</a>
+    <a href="Specialite/Espagne/Tortilla.html" class="blue7" id="7">Tortilla</a>
+    <a href="Specialite/Afrique_du_sud/Bobotie.html" class="blue7" id="11">Tortilla</a>
+
+
+
+
+            </div>
         </div>
+
+    </div>
+        
     </div>
     <div class="fond">
 
@@ -492,7 +535,7 @@
 
             
             document.getElementById("after_submit").style.visibility = "visible";
-            document.getElementById("number_correct").innerHTML = "Réponse : " + reponse + ". Tu as " + correct + ", Regarde un peut la carte c'est juste la ;)";
+            document.getElementById("number_correct").innerHTML = "Réponse : " + reponse + ". Tu as " + correct + ", Regarde un peu la carte c'est juste là ;)";
             document.getElementById(wichone).style.visibility = "visible";
             camera.position.set(x, y, z);
             pointLight.position.set(x, y, z);
@@ -513,51 +556,7 @@
 
     </script>
     
-    <div class="center">
-        <div class="box">
-
-
-            <div class="green" id="myData1">
-                <div class="box" id="after_submit">
-            </div>
-                <div class="box" id="imageDiv"></div>
-                <div class="box" id="myData3">
-                    <a id="hypertext" title="name">(lettres minuscules)Name :</a>
-                </div>
-                <form id="quiz" name="quiz" class="box">
-
-
-
-
-                    <input type="text" id="textbox" name="plat" />
-
-
-                </form>
-
-                <input id="button" type="button" value="Je sais !!" />
-
-    <p id="message"></p>
-
-    <p id="number_correct"></p>
-    <a href="Specialite/Etats_unis/Hamburger.html" class="blue5" id="5">Hamburger</a>
-    <a href="Specialite/Japon/Ramen.html" class="blue1" id="1">Ramen</a>
-    <a href="Specialite/Maroc/Couscous.html" class="blue4" id="4">Couscous</a>
-    <a href="Specialite/Canada/Poutine.html" class="blue3" id="3">Poutine</a>
-    <a href="Specialite/Inde/Tandoori.html" class="blue6" id="6">Tandoori</a>
-    <a href="Specialite/Perou/Ceviche.html" class="blue9" id="9">Ceviche</a>
-    <a href="Specialite/Bresil/Feijoada.html" class="blue2" id="2">Faijoda</a>
-    <a href="Specialite/Coree/Bibimbap.html" class="blue8" id="8">Bibimap</a>
-    <a href="Specialite/France/Huitres.html" class="blue10" id="10">Huitre</a>
-    <a href="Specialite/Espagne/Tortilla.html" class="blue7" id="7">Tortilla</a>
-    <a href="Specialite/Afrique_du_sud/Bobotie.html" class="blue7" id="11">Tortilla</a>
-
-
-
-
-            </div>
-        </div>
-
-    </div>
+    
 
 
 
